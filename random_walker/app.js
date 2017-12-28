@@ -8,6 +8,10 @@ function setup(){
   background(51);
 }
 
+function draw(){
+  makeWalker();
+}
+
 function getRand(max){
   return floor(random(max));
 }
@@ -39,8 +43,4 @@ function makeWalker(randNum){
     y = y - movement;
   }
   
-}
-
-function draw(){
-  makeWalker();
 }
