@@ -1,4 +1,3 @@
 # codingtrain
-Coding train stuff
+[An Archive of My Random Coding Train Projects](trezp.github.io/codingtrain)
 
-1. [Random Walker](https://trezp.github.io/codingtrainbow/random_walker/index.html)
