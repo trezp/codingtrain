@@ -1,5 +1,5 @@
-var x; 
-var y; 
+let x; 
+let y;
 
 function setup(){
   createCanvas(400, 400);
@@ -8,20 +8,26 @@ function setup(){
   background(51);
 }
 
-function draw(){
-  //var colors = ['blue', 'purple', 'pink', 'orange', 'yellow'];
-  //console.log(colors[randColorNum])
-  
-  //stroke(colors[randColorNum]);
-  
-  var randWalkerNum = floor(random(4));
-  //var randColorNum = floor(random(colors.length - 4));
-  var location = floor(random(200));
-  var movement = floor(random(4));
-  //console.log(randColorNum)
-  strokeWeight(4);
-  stroke(255);
-  point(x,y); 
+function getRand(max){
+  return floor(random(max));
+}
+
+function getRandomColor(){
+  const colors = ['blue', 'purple', 'pink', 'orange', 
+  'yellow', 'aqua', 'tomato', 'teal', 'red', 'white', 'black'];
+  return colors[floor(random(colors.length - 1))];
+}
+
+function makeWalker(randNum){
+  const color = getRandomColor();
+  const randWalkerNum = getRand(4);
+  const randPointX = getRand(height);
+  const randPointY = getRand(width)
+  const movement = getRand(10)
+
+  point(x,y);
+  strokeWeight(getRand(8));
+  stroke(color);
 
   if (randWalkerNum === 0){
     x = x + movement;
@@ -32,4 +38,9 @@ function draw(){
   } else {
     y = y - movement;
   }
+  
+}
+
+function draw(){
+  makeWalker();
 }
