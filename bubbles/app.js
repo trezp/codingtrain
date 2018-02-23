@@ -1,27 +1,10 @@
 let bubble;
 let bubbles = [];
+const submitBtn = document.querySelector('#submitBtn');
+const bubbleNum = document.querySelector('#bubbleNum');
+const messages = document.querySelector('#messages');
 
-
-function makeBubbles(quantity){
-  for(let i = 0; i < quantity; i++){
-    let bubble = new Bubble();
-    bubbles.push(bubble);
-  }
-}
-
-function setup(){
-  createCanvas(600,400);
-  makeBubbles(100);
-}
-
-function draw(){
-  background(0);
-
-  bubbles.forEach(function(bubble){
-    bubble.move();
-    bubble.show();
-  })
-}
+submitBtn.addEventListener('click', makeNewBubbles);
 
 class Bubble {
   constructor(){
@@ -40,4 +23,41 @@ class Bubble {
     ellipse(this.x, this.y, 34, 34);
   }
 }
+
+function makeNewBubbles(){
+  const quantity = parseInt(bubbleNum.value);
+
+  if (isNaN(quantity)){
+    messages.innerHTML = 'Oops. Please enter a whole number!';
+    bubbleNum.value = '';
+  } else {
+    bubbles = [];
+    makeBubbles(quantity);
+    messages.innerHTML = '';
+    bubbleNum.value = '';
+  }
+}
+function makeBubbles(quantity){
+  var numOfBubbles = quantity || 150;
+  for(let i = 0; i < numOfBubbles; i++){
+    let bubble = new Bubble();
+    bubbles.push(bubble);
+  }
+}
+function setup(){
+  const canvas = createCanvas(600,400);
+  canvas.parent('bubbleContainer')
+  makeBubbles();
+}
+
+function draw(){
+  background(0);
+  
+  bubbles.forEach(function(bubble){
+    bubble.move();
+    bubble.show();
+  })
+}
+
+
 
